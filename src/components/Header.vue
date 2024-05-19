@@ -2,7 +2,7 @@
   <div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a href="/"><img class="logo" src="@/assets/tabu.png" alt="Logo"></a>
+        <a href="/"><img class="logo" src="@/assets/ORTA_logo.png" alt="Logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -10,11 +10,11 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item"><a class="nav-link" href="/announcementCreate" @click.prevent="checkAndRedirect">Подать объявление</a></li>
-            <li class="nav-item"><a class="nav-link" href="/list">Объявления</a></li>
-            <li class="nav-item"><a class="nav-link" href="/maps">Карта</a></li>
+            <li class="nav-item"><a class="nav-link" href="/announcementCreate" @click.prevent="checkAndRedirect">Разместить курс</a></li>
+            <li class="nav-item"><a class="nav-link" href="/list">Все курсы</a></li>
+            <li class="nav-item"><a class="nav-link" href="/maps">Мои курсы</a></li>
             <li class="nav-item"><a class="nav-link" href="/news">Новости</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Зооуслуги</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
           </ul>
           <div class="profile">
             <div class="dropdown">
@@ -52,7 +52,7 @@
 }
 
 .logo {
-  height: 20px;
+  height: 40px;
 }
 
 .logo-profile {
@@ -61,12 +61,12 @@
 }
 
 .nav-link {
-  color: #2A6877;
+  color: #3dafcb;
   font-weight: bold;
 }
 
 .nav-link:hover {
-  color: #ffffff;
+  color: #238edb;
 }
 
 .dropdown-menu {

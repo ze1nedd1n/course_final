@@ -1,13 +1,13 @@
 <template>
   <div class="text-decor">
     <div class="form-group">
-      <label for="typeAnnouncement">Вид объявления</label>
+      <label for="typeAnnouncement">Выберите тип курса</label>
       <select
         id="typeAnnouncement"
         class="form-select"
         v-model="selectedTypeAnnouncement"
       >
-        <option disabled value="">Выберите тип объявления</option>
+        <option disabled value="">Выберите тип курса</option>
         <option
           v-for="item in typeAnnouncement"
           :key="item.id"
@@ -19,9 +19,9 @@
     </div>
 
     <div class="form-group">
-      <label for="animalType">Вид животного</label>
+      <label for="animalType">Выберите вид обучение</label>
       <select id="animalType" class="form-select" v-model="selectedAnimalType">
-        <option disabled value="">Выберите вид животного</option>
+        <option disabled value="">Выберите вид обучение</option>
         <option v-for="item in animalType" :key="item.id" :value="item.type">
           {{ item.name }}
         </option>
@@ -29,23 +29,19 @@
     </div>
 
     <div class="form-group">
-      <label for="animalBreed">Порода животного</label>
+      <label for="animalBreed">Выберите диапазон цены</label>
       <select
         id="animalBreed"
         class="form-select"
         v-model="selectedAnimalBreed"
         :disabled="!animalBreed.length"
       >
-        <option disabled value="">Выберите породу животного</option>
+        <option disabled value="">Выберите диапазон цены</option>
         <option v-for="item in animalBreed" :key="item.id" :value="item.name">
           {{ item.name }}
         </option>
       </select>
     </div>
-
-    <p>
-      Если у вас пропал питомец или же вы нашли его вы можете подать объявление о пропаже или находке собаки на нашем сайте. Постарайтесь дать как можно более полную информацию об обстоятельствах пропажи/находки. Прикрепите одну или несколько фото к объявлению, это существенно повысит шансы на успех.
-    </p>
 
   </div>
 </template>
@@ -118,7 +114,7 @@ export default {
 }
 
 .text-decor {
-  color: #fff;
+  color: #5aa8dc;
   text-align: initial;
   font-size: 20px;
   font-family: 'Raleway', sans-serif;

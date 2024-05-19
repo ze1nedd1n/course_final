@@ -8,17 +8,17 @@
           <div class="footer-widget">
             <div class="widget-about">
               <div class="img-fluid">
-                <img src="@/assets/tabu.png" alt="" class="img-fluid">
+                <img src="@/assets/ORTA_logo.png" alt="" class="img-fluid">
               </div>
-              <p>Tabu.kz</p>
+              <p>ORTA.kz</p>
               <ul class="contact-details">
                 <li>
                   <span class="icon-earphones"></span> Call Us:
-                  <a href="tel:344-755-111">344-755-111</a>
+                  <a href="tel:458-218-356">458-218-356</a>
                 </li>
                 <li>
                   <span class="icon-envelope-open"></span>
-                  <a href="mailto:support@aazztech.com">support@aazztech.com</a>
+                  <a href="mailto:support@orta.com">support@orta.com</a>
                 </li>
               </ul>
             </div>

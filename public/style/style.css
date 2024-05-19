@@ -14,13 +14,13 @@
 }
 
 .container-bg{
-  margin: 8% 0;
+  padding: 8% 0;
   background-color: #C7D9E5;
 }
 
 .container-bg-home{
-  margin: 8% 0;
-  background-color: #C7D9E5;
+  margin:  0;
+  background-color: #cedbfb;
 }
 
 

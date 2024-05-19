@@ -13,7 +13,7 @@
       width: 100%;
       max-width: 350px;
       padding: 64px 54px;
-      background-color: #2A6877;
+      background-color: #f8f9fa;
       display: flex; 
       flex-direction: column;
     }
@@ -31,8 +31,12 @@
     }
   
     .dashboard__logo {
-      margin-left: auto;
-      margin-bottom: 73px; 
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 70%;
+      height: 70%;
+      margin: 5%
     }
   </style>
   

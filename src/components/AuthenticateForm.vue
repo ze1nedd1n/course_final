@@ -77,7 +77,7 @@ export default {
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-lg-4 col-sm-0">
         <div class="image-container">
-          <img src="@/assets/fox.png" class="w-100 img-fluid" alt="Your image description" />
+          <img src="@/assets/auth_img.png" class="w-100 img-fluid" alt="Your image description" />
         </div>
       </div>
       <div class="col-md-8 col-sm-12">
@@ -105,7 +105,7 @@ export default {
             <form @submit.prevent="register">
               <div class="form-group-checkbox">
                 <input type="checkbox" v-model="shelter">
-                <label for="shelter" id="shelter">Приют:</label>
+                <label for="shelter" id="shelter">Учереждение:</label>
               </div>
               <div class="form-group">
                 <label for="firstName"></label>
