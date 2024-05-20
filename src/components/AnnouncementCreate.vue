@@ -5,20 +5,20 @@
         <div class="create-lost-pet">
           <h2 style="margin-top: 25px; font-weight: bold; margin-bottom: 25px;" >Основная информация</h2>
           <div class="create_details">
-            <!-- Что произошло с питомцем? -->
+            <!-- Данные курса -->
             <div class="form-group">
-              <label for="typeAnnouncement">Что произошло с питомцем?</label>
+              <label for="typeAnnouncement">Определите категорию курса</label>
               <select id="typeAnnouncement" class="form-select" v-model="formData.type">
-                <option disabled value="">Выберите тип объявления</option>
+                <option disabled value="">Выберите категорию курса</option>
                 <option v-for="item in typeAnnouncement" :key="item.id" :value="item.type">
                   {{ item.name }}
                 </option>
               </select>
             </div>
 
-            <!-- Имя питомца? -->
+            <!-- Название курса? -->
             <div class="form-group">
-              <label for="animalName">Имя питомца?</label>
+              <label for="animalName">Название курса?</label>
               <textarea id="animalName" class="form-control" style="height: 17px;"
                 v-model="formData.animal.animalName"></textarea>
             </div>
@@ -26,21 +26,21 @@
 
 
           <div class="create_details">
-            <!-- Вид питомца? -->
+            <!-- Вид обучение? -->
             <div class="form-group">
-              <label for="animalType">Вид питомца?</label>
+              <label for="animalType">Вид обучение?</label>
               <select id="animalType" class="form-select" v-model="formData.animal.type" @change="onAnimalTypeChange">
-                <option disabled value="">Выберите вид животного</option>
+                <option disabled value="">Выберите вид обучение</option>
                 <option v-for="item in animalType" :key="item.id" :value="item.name">
                   {{ item.name }}
                 </option>
               </select>
             </div>
-            <!-- Цвет животного? -->
+            <!-- Цена? -->
             <div class="form-group">
-              <label for="animalColor">Цвет животного?</label>
+              <label for="animalColor">Цена?</label>
               <select id="animalColor" class="form-select" v-model="formData.animal.color">
-                <option disabled value="">Выберите цвет животного</option>
+                <option disabled value="">Выберите диапазон цены</option>
                 <option v-for="item in animalColors" :key="item.id" :value="item.name">
                   {{ item.name }}
                 </option>
@@ -50,8 +50,7 @@
 
 
 
-
-          <!-- Порода питомца? -->
+<!--
           <div class="form-group" v-if="formData.animal.type !== ''">
             <label for="animalBreed">Порода питомца?</label>
             <select id="animalBreed" class="form-select" v-model="formData.animal.breed">
@@ -60,7 +59,7 @@
                 {{ item.name }}
               </option>
             </select>
-          </div>
+          </div> -->
 
           <!-- Пол питомца? -->
           <!-- <div class="form-group">
@@ -78,7 +77,7 @@
             <textarea id="details" class="form-control" v-model="formData.details"></textarea>
           </div>
 
-          <h2 style="margin-top: 25px; font-weight: bold; margin-bottom: 10px;" >Место пропажи\Находки</h2>
+          <h2 style="margin-top: 25px; font-weight: bold; margin-bottom: 10px;" >Место нахождение учереждения</h2>
           <!-- Район? -->
           <div class="form-group">
             <label for="district">Район?</label>
@@ -101,9 +100,10 @@
 
           <!-- Загрузить фотографии животного -->
           <div class="form-group" style="margin-top: 45px;">
-            <h2 style="margin-top: 25px; font-weight: bold; margin-bottom: 10px;" >Добавить фотографию питомца</h2>
+            <h2 style="margin-top: 25px; font-weight: bold; margin-bottom: 10px;" >Добавить фотографию для курса</h2>
             <input id="animalPhotos" type="file" class="form-control" @change="onFileChange" multiple />
           </div>
+          
 
           <!-- Кнопка Создать -->
           <button class="btn btn-primary" @click="submitForm" style="margin-bottom: 25px;">Создать</button>
@@ -111,7 +111,7 @@
       </div>
       <div class="col-md-6">
         <div>
-          <img src="@/assets/cat2.png" class="w-100 img-fluid" alt="Your image description" />
+          <img src="@/assets/man1.png" class="w-100 img-fluid" alt="Your image description" />
         </div>
       </div>
 

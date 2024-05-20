@@ -1,13 +1,13 @@
 <template>
   <div class="text-decor">
     <div class="form-group">
-      <label for="typeAnnouncement">Выберите тип курса</label>
+      <label for="typeAnnouncement">Выберите категорию курса</label>
       <select
         id="typeAnnouncement"
         class="form-select"
         v-model="selectedTypeAnnouncement"
       >
-        <option disabled value="">Выберите тип курса</option>
+        <option disabled value="">Выберите категорию курса</option>
         <option
           v-for="item in typeAnnouncement"
           :key="item.id"

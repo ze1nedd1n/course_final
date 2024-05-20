@@ -29,8 +29,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
-    height: 70%;
     margin: 5%;
   }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard__container contact_info">
-    <img src="@/assets/tabu-dashboard.png" alt="tabu logo" width="193" height="40" class="dashboard__logo">
+    <img src="@/assets/ORTA_logo.png" alt="orta logo"  class="dashboard__logo">
     <h1 style="margin-bottom: 50px;">Контакты</h1>
     <p>{{user.firstName }}</p>
     <p> {{ user.phone }}</p>
@@ -53,8 +53,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 70%;
-    height: 70%;
     margin: 5%
   }
 
