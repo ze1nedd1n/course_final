@@ -47,7 +47,7 @@ export default {
   methods: {
     async fetchAllPets() {
       try {
-        const response = await axios.post('http://localhost:9090/announcement/getAll',{});
+        const response = await axios.post('http://localhost:9090/course/getAll',{});
         this.lostPets = response.data;
       } catch (error) {
         console.error('Error fetching all pets:', error);

@@ -1,90 +1,89 @@
 <template>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-4" style="margin: 2% 0%;" >
-        <select v-model="selectedType" @change="filterMapDataByType" class="form-control" id="type">
-          <option value="">Тип Объявления</option>
-          <option v-for="typ in types" :key="typ"> {{ typ }} </option>
-        </select>
-      </div>
+  <div>
+    <div class="lost-pet-list">
+      <LostPetCard
+        v-for="(pet, index) in lostPets"
+        :key="index"
+        :pet="pet"
+      />
     </div>
-    <div class="row">
-      <div class="col-xl-12">
-        <div style="height: 600px; width: 100%">
-          <l-map v-if="filteredMapData.length > 0" :zoom="zoom" :center="center">
-            <l-tile-layer :url="url"></l-tile-layer>
-            <l-marker v-for="item in filteredMapData" :key="item.announcementId"
-              :lat-lng="[Number(item.coordinates.lat), Number(item.coordinates.lng)]"
-              @click="goToAnnouncement(item.announcementId)"></l-marker>
-          </l-map>
-          <div v-else>Loading map...</div>
-        </div>
-      </div>
-    </div>
-
   </div>
 </template>
 
 <script>
-import { ref, onMounted, computed } from 'vue';
-import { LMap, LTileLayer, LMarker } from 'vue3-leaflet';
 import axios from 'axios';
-import { useRouter } from 'vue-router';
-import 'leaflet/dist/leaflet.css';
-
+import { mapState } from 'vuex';
+import LostPetCard from './LostPetCard.vue';
 export default {
   components: {
-    LMap,
-    LTileLayer,
-    LMarker
+    LostPetCard
   },
-  setup() {
-    const url = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
-    const zoom = ref(13);
-    const center = ref([43.23798106012807, 76.88850402832033]); 
-    const mapData = ref([]);
-    const selectedType = ref('');
-    const types = ref([]);
-    const typeNames = {
-      'FOUND': 'Найденные животные',
-      'MISSING': 'Пропавшие животные',
-      'GIVE': 'В добрые руки',
-      'FROM_SHELTER': 'Животные в приютах'
+  data() {
+    return {
+      lostPets: [],
     };
-
-    const router = useRouter();
-    const filteredMapData = computed(() => {
-      if (!selectedType.value) {
-        return mapData.value;
-      }
-      return mapData.value.filter(item => item.type === selectedType.value);
-    });
-
-
-    const fetchMapData = async () => {
+  },
+  computed: {
+    ...mapState([
+      'selectedTypeAnnouncement',
+      'selectedAnimalType',
+      'selectedAnimalBreed',
+    ]),
+  },
+  watch: {
+    selectedTypeAnnouncement() {
+      this.sendDataToServer();
+    },
+    selectedAnimalType() {
+      this.sendDataToServer();
+    },
+    selectedAnimalBreed() {
+      this.sendDataToServer();
+    },
+  },
+  mounted() {
+    this.fetchAllPets();
+  },
+  methods: {
+    async fetchAllPets() {
       try {
-        const response = await axios.get('http://localhost:9090/map/');
-        mapData.value = response.data;
-        // Convert type codes to their names
-        mapData.value.forEach(item => item.type = typeNames[item.type]);
-        // Update types after fetching data
-        types.value = [...new Set(mapData.value.map(item => item.type))];
+        const response = await axios.post('http://localhost:9090/course/getAll',{});
+        this.lostPets = response.data;
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching all pets:', error);
       }
-    };
+    },
+    async sendDataToServer() {
+      if (
+        !this.selectedTypeAnnouncement ||
+        !this.selectedAnimalType ||
+        !this.selectedAnimalBreed
+      ) {
+        return;
+      }
 
-    const goToAnnouncement = (announcementId) => {
-      router.push(`/pet/${announcementId}`);
-    };
-
-    const filterMapDataByType = () => {
-      // Map will automatically be updated based on the reactive `filteredMapData` property
-    };
-
-    onMounted(fetchMapData);
-
-    return { url, zoom, center, filteredMapData, goToAnnouncement, selectedType, types, filterMapDataByType };
+      try {
+        const response = await axios.get('http://localhost:9090/announcement/myCourse', {
+          typeAnnouncement: this.selectedTypeAnnouncement,
+          animalType: this.selectedAnimalType,
+          animalBreed: this.selectedAnimalBreed,
+        });
+        this.lostPets = response.data;
+      } catch (error) {
+        console.error('Error sending data to server:', error);
+      }
+    },
   },
 };
 </script>
+
+<style>
+.lost-pet-list {
+  margin-left: 65px;
+  padding-top: 60px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+</style>

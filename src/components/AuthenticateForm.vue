@@ -14,7 +14,7 @@ export default {
   },
   methods: {
     authenticate() {
-      axios.post('http://localhost:8081/authenticate', {
+      axios.post('http://localhost:9090/auth/sign-in', {
         username: this.phone,
         password: this.password
       }

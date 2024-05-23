@@ -1,16 +1,15 @@
 <template>
 <div class="card" style="width: 300px;">
   <div class="card-image">
-  <img :src=pet.fileInfos[0].url class="card-img-top" alt="...">
+  <img :src=pet.img class="card-img-top" alt="...">
 </div>
   <div class="card-body">
     <h5 class="card-title"><b>{{ pet.title }}</b></h5>
-    <p class="card-title"><b>Порода</b>:{{ pet.animal.breed }}</p>
-    <p class="card-title"><b>Цвет</b>:{{ pet.animal.color }}</p>
-    <p class="card-title"><b>Место</b>:{{ pet.district }}</p>
+    <p class="card-title"><b>Дата начала</b>:{{ formattedDate }}</p>
+    <p class="card-title"><b>Стоимость</b>:{{ pet.price }}</p>
     <router-link :to="{ name: 'PetDetails', params: { id: pet.id } }" class="btn btn-success">Подробнее</router-link>
     <hr>  
-    <p class="card-title">{{ pet.creationDate }}</p>
+    <p class="card-title">{{ pet.description }}</p>
   </div>
 </div>
 </template>
@@ -22,7 +21,17 @@ export default {
       type: Object,
       required: true,
     },
-  },methods:{
+  },
+computed:{
+  formattedDate() {
+      const date = new Date(this.pet.timeSpending);
+      const day = String(date.getDate()).padStart(2, '0');
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const year = date.getFullYear();
+      return `${day}/${month}/${year}`;
+    }
+},
+  methods:{
     goToItem(id) {
       this.$router.push({ name: "item-details", params: { itemId: id } });
     },

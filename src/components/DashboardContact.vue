@@ -2,7 +2,7 @@
   <div class="dashboard__container contact_info">
     <img src="@/assets/ORTA_logo.png" alt="orta logo"  class="dashboard__logo">
     <h1 style="margin-bottom: 50px;">Контакты</h1>
-    <p>{{user.firstName }}</p>
+    <p>{{user.name }}</p>
     <p> {{ user.phone }}</p>
     <p>{{ user.email }}</p>
     <button @click="callPhoneNumber" :disabled="!user.phone" class="call-button">
@@ -92,9 +92,9 @@ export default {
   async created() {
     const { id } = this.$route.params;
     try {
-      const response = await axios.get(`http://localhost:9090/announcement/${id}`);
+      const response = await axios.get(`http://localhost:9090/course/${id}`);
       const pet = await response.data;
-      const users = await axios.get(`http://localhost:8081/users/getById/${pet.userId}`);
+      const users = await axios.get(`http://localhost:9090/users/getById/${pet.userId}`);
       this.user = await users.data;
       this.user.phone = this.formatPhoneNumber(this.user.phone);
     } catch (error) {

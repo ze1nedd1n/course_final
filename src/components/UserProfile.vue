@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid mt-5">
-        <div class="row">
+        <div class="row" style="margin-bottom: 10%;">
 
             <div class="col-md-4 col-xl-3 col-xxl-3 col-lg-4">
                 <img class="card-img-top w-100" :src="this.user.avatar ? this.user.avatar : require('@/assets/profile.png')"
@@ -10,26 +10,26 @@
             </div>
 
             <div class="col-md-4 profile-info" v-if="!editMode">
-                <H3>{{ this.user.firstName ? this.user.firstName + " " + this.user.lastName : 'заполните страничку!' }}</H3>
-                <p>{{ this.user.age ? this.user.age + ' года' : 'тут должен быть ваш возраст...' }}</p>
+                <H3>{{ this.user.firstName ? this.user.firstName + " " + this.user.lastName : 'Марко Поло!' }}</H3>
+                <p>{{ this.user.age ? this.user.age + ' года' : '25 лет' }}</p>
                 <hr>
                 <div class="profile_details">
                     <p><b>Телефон </b>:</p>
-                    <p>{{ this.user.username || 'заполните страничку!' }}</p>
+                    <p>{{ this.user.username || '8-706-416-9825' }}</p>
                 </div>
                 <div class="profile_details">
                     <p><b>Почта</b>:</p>
-                    <p> {{ this.user.email || 'заполните страничку!' }}</p>
+                    <p> {{ this.user.email || 'zein@mail.ru' }}</p>
                 </div>
                 <div class="profile_details">
                     <p><b>Пол</b>:</p>
-                    <p>{{ this.user.male || 'заполните страничку!' }}</p>
+                    <p>{{ this.user.male || 'M' }}</p>
                 </div>
                 <div class="profile-details" style="margin-top: 15px;">
                     <p><b>Подробнее</b> </p>
                 </div>
                 <div class="profile-description">
-                    <p>{{ this.user.details || 'заполните страничку!' }}</p>
+                    <p>{{ this.user.details || 'Люблю путешествие и волейбол' }}</p>
                 </div>
             </div>
             <div class="col-md-4 form_insert " v-if="editMode">
@@ -63,19 +63,7 @@
                         <button type="submit_sec">Сохранить</button>
                         <button type="submit_sec" @click="cancelEdit">Отменить</button>
                     </div>
-
                 </form>
-            </div>
-        </div>
-        <div class="row" style="margin-top: 25px;">
-            <div class="col-xl-12">
-                <div>
-                    <h3>Объявления {{ this.user.firstName ? this.user.firstName + '(а)' : 'заполните страничку!' }}</h3>
-                </div>
-                <hr>
-                <div class="lost-pet-list">
-                    <LostPetCard v-for="(pet, index) in lostPets" :key="index" :pet="pet" />
-                </div>
             </div>
         </div>
     </div>
@@ -118,13 +106,10 @@
 <script>
 import 'bootstrap/dist/css/bootstrap.css'
 import axios from 'axios';
-import LostPetCard from './LostPetCard.vue';
 import { mask } from 'vue-the-mask'
 export default {
     directives: { mask },
-    components: {
-        LostPetCard
-    },
+    
     data() {
         return {
             lostPets: [],
